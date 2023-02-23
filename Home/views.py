@@ -4,11 +4,12 @@ from django.contrib import messages
 from Blog.models import Post
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from datetime import datetime
 
 
 def index(request):
     pubDate = {
-        "month": "February 22, 2023"
+        "month": datetime.now().strftime("%Y-%m-%d")
     }
     return render(request, "home/index.html", pubDate)
 
@@ -21,16 +22,17 @@ def contact(request):
     if request.method == "POST":
         name = request.POST.get("name")
         email = request.POST.get("email")
-        phone = request.POST.get("contact")
+        contact = request.POST.get("contact")
         msg = request.POST.get("msg")
 
-        if not(len(name) < 3 or len(email) < 5 or len(phone) < 12 or len(msg)< 20):
-            form = Contact(name=name, email=email, phone=phone, msg=msg)
+        if not(len(name) < 3 or len(email) < 5 or len(contact) < 12 or len(msg) < 10):
+            form = Contact(name=name, email=email, contact=contact, msg=msg)
             form.save()
             messages.success(request, "Ваше сообщение было успешно отправлено администратору !")
         else:
             messages.error(request, "Заполните форму правильно!")
     return render(request, "home/contact.html")
+
 
 def search(request):
     query = request.GET.get('query')
@@ -55,24 +57,26 @@ def search(request):
     }
     return render(request, 'home/search.html', context=context)
 
+
 def userSignup(request):
     if request.method == "POST":
-        fname = request.POST.get("fname")
-        lname = request.POST.get("lname")
-        username = request.POST.get("username")
+        fname = request.POST.get("fName")
+        lname = request.POST.get("lName")
+        usernames = request.POST.get("username")
         email = request.POST.get("email")
         pass1 = request.POST.get('pass1')
         pass2 = request.POST.get("pass2")
 
         if pass1 == pass2:
-            user = User.objects.create_user(username=username, email=email, password=pass2)
+            user = User.objects.create_user(username=usernames, email=email, password=pass1)
             user.first_name = fname
             user.last_name = lname
             user.save()
-            messages.success(request,  "Ваш учетная запись успешно создана")
+            messages.success(request,  "Ваш учетная запись успешно создана!")
 
             return redirect("/")
-        return HttpResponse("404 - Не верный запрос")
+    return HttpResponse("404 - Не верный запрос")
+
 
 def userLogin(request):
     if request.method == "POST":
