@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
-{% block title %}Home | Blog{% endblock title %}
+{% block title %}Главная страница{% endblock title %}
 
-{% block activeBlog %}active{% endblock activeBlog %}
+{% block activeBlog %}активен{% endblock activeBlog %}
 
 {% block body %}
 
@@ -30,7 +30,7 @@
             <p class="card-text">{{ post.timeStamp }}</p>
             <hr class="solid">
             <p class="card-text">{{post.text | truncatechars:500}}</p>
-            <a href="/blog/{{post.slug}}" class="btn btn-primary">Continue Reading</a>
+            <a href="/blog/{{post.slug}}" class="btn btn-primary">Продолжить читать</a>
         </div>
     </div>
     {% endfor %}

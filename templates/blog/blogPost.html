@@ -25,12 +25,12 @@
     <form action="/blog/postComment" method="post"> {% csrf_token %}
 
         <div class="mb-3">
-            <label for="comment" class="form-label">Post Comment</label>
+            <label for="comment" class="form-label">Комментарии к посту</label>
             <input name="comment" type="text" class="form-control" id="comment" aria-describedby="text">
         </div>
         <input type="hidden" name="postSno" value="{{post.sno}}">
         <input type="hidden" name="parentSno" value="">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Подтвердить</button>
     </form>
 
     <hr class="rounded">
@@ -69,7 +69,7 @@
                 <div class="reply mx-0">
                     <a class="btn btn-primary btn-sm my-3" data-toggle="collapse" href="#replyBox{{comment.sno}}"
                         role="button" aria-expanded="false" aria-controls="replyBox{{comment.sno}}">
-                        REPLY
+                        Повторить
                     </a>
 
                     <div class="collapse my-2" id="replyBox{{comment.sno}}">
@@ -83,7 +83,7 @@
                                 </div>
                                 <input type="hidden" name="postSno" value="{{post.sno}}">
                                 <input type="hidden" name="parentSno" value="{{comment.sno}}">
-                                <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                                <button type="submit" class="btn btn-primary btn-sm">Подтвердить</button>
                             </form>
                         </div>
                     </div>

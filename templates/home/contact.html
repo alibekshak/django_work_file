@@ -39,29 +39,29 @@
 
 <!-- contact form -->
 <div class="container">
-    <h4 class="text-center my-3"><u>Contact To iCoder Admin</u></h4>
+    <h4 class="text-center my-3"><u>Отправьте ваш фидбек к ITCblog Admin</u></h4>
     <form method="post" action="/contact/">
         {% csrf_token %}
         <div class="form-group">
-            <label for="name">Name</label>
+            <label for="name">Имя</label>
             <input name="name" type="name" class="form-control" id="name" aria-describedby="nameHelp"
-                placeholder="Enter your name here">
+                placeholder="Ваше имя">
         </div>
         <div class="form-group">
-            <label for="email">Email</label>
+            <label for="email">Почта</label>
             <input name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp"
                 placeholder="example@gmail.com">
         </div>
         <div class="form-group">
-            <label for="contact">Contact</label>
+            <label for="contact">Номер</label>
             <input name="contact" type="phone" class="form-control" id="contact"
-                placeholder="Phone No (with country code)">
+                placeholder="Ваш номер">
         </div>
         <div class="form-group">
-            <label for="msg">Example textarea</label>
+            <label for="msg">Пример</label>
             <textarea name="msg" class="form-control" id="msg" rows="3"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Подтвердить</button>
     </form>
 </div>
 
